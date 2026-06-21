@@ -1,2 +1,2 @@
-# DU
-Differential Unfolding: Efficient Unfolding Reconstruction for Video Snapshot Compressive Imaging
+# Differential Unfolding: Efficient Unfolding Reconstruction for Video Snapshot Compressive Imaging
+Muyuan Zhang*, Jiancheng Zhang*, Haijin Zeng, Yin-Ping Zhao
