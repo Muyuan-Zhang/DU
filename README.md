@@ -15,5 +15,3 @@ Muyuan Zhang*, Jiancheng Zhang*, Haijin Zeng, Yin-Ping Zhao
 This repository contains the official implementation of:
 
 **Differential Unfolding: Efficient Unfolding Reconstruction for Video Snapshot Compressive Imaging**
-
-The code will be released soon.
