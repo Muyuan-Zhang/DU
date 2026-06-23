@@ -604,11 +604,11 @@ class FEM(nn.Module):
 
 @MODELS.register_module
 class DU(torch.nn.Module):
-    def __init__(self, dim, color_dim, stage, cycle):
+    def __init__(self, dim, color_dim, stage, skip):
         super(
             DU,
             self).__init__()
-        self.cycle = cycle
+        self.skip = skip
         self.stage = stage
         self.dim = dim
         self.color_dim = color_dim
@@ -619,7 +619,7 @@ class DU(torch.nn.Module):
         for i in range(stage):
             self.pho.append(Param_Estimator(in_dim=color_dim, out_dim=color_dim))
         for i in range(stage):
-            if i % (self.cycle) == 0:
+            if i % (self.skip + 1) == 0:
                 self.net.append(
                     STUNet(dim=dim),
                 )
@@ -692,7 +692,7 @@ class DU(torch.nn.Module):
         prev_output = None
         for i in range(self.stage):
             pho = self.pho[i](f)
-            if i % (self.cycle) == 0:
+            if i % (self.skip + 1) == 0:
                 z, prev_output = self.net[i](torch.cat([f, feat], dim=1))
             else:
                 z, prev_output = self.net[i](torch.cat([f, feat], dim=1), prev_output)
